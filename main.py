@@ -1,13 +1,23 @@
 def degcheck(equation) :
+    
+    equation = str(equation)
 
-    equation_variables = str(equation).split("+")
+    if "-" in equation : 
+        for i in equation :
+            print(i)
+            if i == "-" : 
+                index = equation.index(i)
+                print(equation[:index],"and", equation[index:])
+                new_equation = equation[:index] + "+" + equation[index:] 
 
+            
+    print(new_equation)
+    equation_variables = equation.split("+")
 
     for i in equation_variables :
         index = equation_variables.index(i)
         i = str(i).split()
         equation_variables[index] = i[0]
-
 
     largest_degree_so_far = 0 
     for i  in equation_variables :
