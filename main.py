@@ -4,20 +4,18 @@ def degcheck(equation) :
 
     if "-" in equation : 
         for i in equation :
-            print(i)
             if i == "-" : 
                 index = equation.index(i)
-                print(equation[:index],"and", equation[index:])
                 new_equation = equation[:index] + "+" + equation[index:] 
 
             
-    print(new_equation)
-    equation_variables = equation.split("+")
+    equation_variables = new_equation.split("+")
+    print(equation_variables)
 
     for i in equation_variables :
         index = equation_variables.index(i)
-        i = str(i).split()
-        equation_variables[index] = i[0]
+        i = str(i).strip()
+        equation_variables[index] = i
 
     largest_degree_so_far = 0 
     for i  in equation_variables :
@@ -36,8 +34,19 @@ def degcheck(equation) :
 
 
 def deg2(equation_variables) :
+
     print(equation_variables)
+
+
     for i in equation_variables :
+        if " " in i :
+            i = str(i).split()
+            string = " "
+            for j in i :
+                string += str(j)
+            i = string
+
+
         if "x^2" in i :
             if i[:-3] == '' :
                 a = 1
@@ -50,6 +59,8 @@ def deg2(equation_variables) :
                 b = int(i[:-1])
         else : 
             c = int(i) 
+
+            
     discriminant = (b**2) - (4*a*c)
     if discriminant >= 0 : 
         root1 = (-b + (discriminant **1/2))/(2*a)
