@@ -57,8 +57,8 @@ def degcheck(equation) :
     #Quadratic eqn
     if largest_degree_so_far == 2 :
         deg2(equation_variables)
-    elif largest_degree_so_far == 3 :
-        deg3(equation_variables)
+
+
 
 #quadratic equation
 def deg2(equation_variables) :
@@ -137,15 +137,15 @@ def deg2(equation_variables) :
     n.centre(f"The roots of the equation are : {root1} and {root2}")
 
 
+
 #cool entry screen 
 file = open("design.txt",encoding= "utf8")
 lines = file.readlines()
 file.close()
-
 #Forever loop
 equation = ''
 while equation != 'exit' :
-    middle = n.centre('middle')[1]
+    middle = n.get_alignments()['left_align']*" "
     os.system('cls')
     string = ""
     for i in  lines : 
@@ -158,4 +158,5 @@ while equation != 'exit' :
             if str(equation).lower() != 'exit' :
                 degcheck(equation) 
     else :
+        n.centre("Exited the calculator", "-")
         break
